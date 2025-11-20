@@ -1,0 +1,262 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intelligence Policing — Dashboard</title>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --bg:#0f1724; --panel:#0b1220; --muted:#9aa4b2; --accent:#5eead4; --danger:#fb7185;
+      --glass: rgba(255,255,255,0.03);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:linear-gradient(180deg,#071126 0%, #071023 100%); color:#e6eef6;}
+    .app{display:grid; grid-template-columns:260px 1fr; min-height:100vh;}/* Sidebar */
+.sidebar{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:24px; border-right:1px solid rgba(255,255,255,0.03)}
+.brand{font-weight:700; letter-spacing:0.6px; margin-bottom:18px; font-size:18px; color:var(--accent)}
+.nav{display:flex; flex-direction:column; gap:8px}
+.nav button{background:transparent; color:var(--muted); border:0; padding:10px 12px; text-align:left; border-radius:8px; cursor:pointer}
+.nav button.active, .nav button:hover{background:var(--glass); color:#e6eef6}
+.small{font-size:13px; color:var(--muted)}
+
+/* Header + topbar */
+.topbar{display:flex; justify-content:space-between; align-items:center; padding:20px 28px;}
+.search{display:flex; gap:12px; align-items:center}
+.search input{background:transparent; border:1px solid rgba(255,255,255,0.04); padding:10px 12px; border-radius:10px; color:#e6eef6; min-width:260px}
+.actions{display:flex; gap:10px}
+.btn{background:var(--accent); color:#022; padding:10px 14px; border:0; border-radius:10px; cursor:pointer; font-weight:600}
+.btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted)}
+
+/* Main grid */
+.main{padding:18px 28px}
+.cards{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)}
+.card h3{margin:0; font-size:13px; color:var(--muted)}
+.card p{margin:6px 0 0; font-size:20px; font-weight:700}
+
+.layout{display:grid; grid-template-columns:1fr 420px; gap:18px}
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)}
+.table{width:100%; border-collapse:collapse}
+table thead th{font-weight:700; text-align:left; padding:10px 8px; font-size:13px; color:var(--muted)}
+table tbody td{padding:10px 8px; font-size:14px; border-top:1px solid rgba(255,255,255,0.02)}
+.pill{padding:6px 8px; border-radius:999px; font-weight:600; font-size:12px}
+.sev-low{background:rgba(94,234,212,0.12); color:var(--accent)}
+.sev-med{background:rgba(255,223,93,0.08); color:#ffd86b}
+.sev-high{background:rgba(251,113,133,0.08); color:var(--danger)}
+
+/* responsive */
+@media (max-width:980px){.app{grid-template-columns:1fr} .cards{grid-template-columns:repeat(2,1fr)} .layout{grid-template-columns:1fr}
+  .sidebar{display:none} .search input{min-width:150px}}
+
+footer{padding:18px 28px; color:var(--muted); font-size:13px}
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">🛡️ Intelligence Policing</div>
+      <div class="small">Secure dashboard for intelligence workflows</div>
+      <nav class="nav" style="margin-top:18px">
+        <button class="active">Overview</button>
+        <button>Incidents</button>
+        <button>Analysts</button>
+        <button>Reports</button>
+        <button>Settings</button>
+      </nav>
+      <div style="margin-top:30px;font-size:12px;color:var(--muted)">Logged in as <strong>analyst.jdoe</strong></div>
+    </aside><div style="display:flex; flex-direction:column; min-height:100vh">
+  <div class="topbar">
+    <div class="search">
+      <input id="globalSearch" placeholder="Search incidents, names, tags..." />
+      <div class="actions">
+        <button class="btn" id="newIncidentBtn">+ New Incident</button>
+        <button class="btn ghost" id="exportBtn">Export CSV</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="small">Alerts: <strong id="alertsCount">3</strong></div>
+      <div class="small">Role: <strong>Analyst</strong></div>
+    </div>
+  </div>
+
+  <main class="main">
+    <section class="cards">
+      <div class="card"><h3>Active Incidents</h3><p id="countActive">12</p></div>
+      <div class="card"><h3>High Priority</h3><p id="countHigh">4</p></div>
+      <div class="card"><h3>Analysts</h3><p id="countAnalysts">7</p></div>
+      <div class="card"><h3>Resolved Today</h3><p id="countResolved">2</p></div>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <h2 style="margin:0">Incidents</h2>
+          <div style="display:flex;gap:8px">
+            <select id="filterSeverity"><option value="all">All severities</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+            <select id="filterStatus"><option value="all">All status</option><option value="open">Open</option><option value="assigned">Assigned</option><option value="resolved">Resolved</option></select>
+          </div>
+        </div>
+
+        <div style="overflow:auto; max-height:520px">
+          <table class="table" id="incTable">
+            <thead><tr><th>ID</th><th>Title</th><th>Severity</th><th>Assigned</th><th>Status</th><th>Reported</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <aside class="panel">
+        <h3 style="margin-top:6px">Summary</h3>
+        <canvas id="incChart" height="170"></canvas>
+        <div style="margin-top:12px">
+          <h4 style="margin:6px 0">Map (placeholder)</h4>
+          <div style="height:200px; background:linear-gradient(180deg,#031024,#071126); border-radius:10px; display:flex;align-items:center;justify-content:center;color:var(--muted);}">Map & geospatial visualization goes here</div>
+        </div>
+      </aside>
+    </div>
+
+  </main>
+
+  <footer>Tip: This is a sample UI. Replace sample data with your live data source and add authentication before deployment.</footer>
+</div>
+
+  </div>  <!-- Modal (simple) -->  <div id="modal" style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.6)">
+    <div style="width:520px; background:#071124; padding:18px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)">
+      <h3 style="margin-top:0">Create New Incident</h3>
+      <div style="display:grid; gap:8px">
+        <input id="iTitle" placeholder="Short title" />
+        <textarea id="iDesc" placeholder="Description (what happened)"></textarea>
+        <div style="display:flex;gap:8px">
+          <select id="iSeverity"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+          <input id="iReporter" placeholder="Reporter" />
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px">
+          <button class="btn ghost" id="closeModal">Cancel</button>
+          <button class="btn" id="createIncident">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>  <script>
+    // Sample data (replace with API calls)
+    const incidents = [
+      {id: 'INC-001', title:'Suspicious financial transfers', severity:'high', assigned:'Sgt. Parker', status:'open', reported:'2025-09-28'},
+      {id: 'INC-002', title:'Potential insider leak', severity:'medium', assigned:'Unassigned', status:'open', reported:'2025-10-03'},
+      {id: 'INC-003', title:'Social media cluster monitoring', severity:'low', assigned:'Analyst Lee', status:'assigned', reported:'2025-10-05'},
+      {id: 'INC-004', title:'High-risk OP movement', severity:'high', assigned:'Detective Ames', status:'assigned', reported:'2025-09-30'},
+      {id: 'INC-005', title:'Data exfiltration attempt', severity:'high', assigned:'Unassigned', status:'open', reported:'2025-10-04'},
+      {id: 'INC-006', title:'Anonymous tip: package drop', severity:'medium', assigned:'Analyst Khan', status:'resolved', reported:'2025-10-01'}
+    ];
+
+    // UI references
+    const tbody = document.querySelector('#incTable tbody');
+    const filterSeverity = document.getElementById('filterSeverity');
+    const filterStatus = document.getElementById('filterStatus');
+    const globalSearch = document.getElementById('globalSearch');
+
+    function renderTable(list){
+      tbody.innerHTML = '';
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.id}</td>
+          <td>${escapeHtml(item.title)}</td>
+          <td><span class="pill ${severityClass(item.severity)}">${capitalize(item.severity)}</span></td>
+          <td>${escapeHtml(item.assigned)}</td>
+          <td>${statusBadge(item.status)}</td>
+          <td>${item.reported}</td>
+          <td><button class="btn ghost" onclick="assign('${item.id}')">Assign</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateCounts(list);
+    }
+
+    function updateCounts(list){
+      document.getElementById('countActive').innerText = list.filter(i=>i.status!=='resolved').length;
+      document.getElementById('countHigh').innerText = list.filter(i=>i.severity==='high').length;
+      document.getElementById('countAnalysts').innerText = 7; // placeholder
+      document.getElementById('countResolved').innerText = list.filter(i=>i.status==='resolved').length;
+      document.getElementById('alertsCount').innerText = list.filter(i=>i.severity==='high' && i.status!=='resolved').length;
+    }
+
+    function severityClass(s){ return s==='low' ? 'sev-low' : s==='medium' ? 'sev-med' : 'sev-high' }
+    function statusBadge(s){ return s==='resolved'? '<span class="pill" style="background:rgba(255,255,255,0.02); color:var(--muted)">Resolved</span>' : s==='assigned'? '<span class="pill" style="background:rgba(94,234,212,0.06); color:var(--accent)">Assigned</span>' : '<span class="pill" style="background:rgba(255,255,255,0.02); color:var(--muted)">Open</span>' }
+    function capitalize(t){ return t.charAt(0).toUpperCase()+t.slice(1) }
+    function escapeHtml(text){ return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+    // Filtering / searching
+    function applyFilters(){
+      const sev = filterSeverity.value; const st = filterStatus.value; const q = globalSearch.value.trim().toLowerCase();
+      const out = incidents.filter(i=>{
+        if(sev!=='all' && i.severity!==sev) return false;
+        if(st!=='all' && i.status!==st) return false;
+        if(q){ const hay = (i.id+' '+i.title+' '+i.assigned+' '+i.reported).toLowerCase(); if(!hay.includes(q)) return false }
+        return true;
+      });
+      renderTable(out);
+      updateChart(out);
+    }
+
+    filterSeverity.addEventListener('change', applyFilters);
+    filterStatus.addEventListener('change', applyFilters);
+    globalSearch.addEventListener('input', debounce(applyFilters,250));
+
+    // Assign placeholder (opens prompt)
+    function assign(id){
+      const inc = incidents.find(i=>i.id===id); if(!inc) return alert('Not found');
+      const who = prompt('Assign to (name):', inc.assigned==='Unassigned' ? '' : inc.assigned);
+      if(who!==null){ inc.assigned = who || 'Unassigned'; inc.status = who? 'assigned' : inc.status; applyFilters(); }
+    }
+    window.assign = assign;
+
+    // Modal create
+    const modal = document.getElementById('modal');
+    document.getElementById('newIncidentBtn').addEventListener('click', ()=> modal.style.display='flex');
+    document.getElementById('closeModal').addEventListener('click', ()=> modal.style.display='none');
+    document.getElementById('createIncident').addEventListener('click', ()=>{
+      const title = document.getElementById('iTitle').value.trim();
+      const desc = document.getElementById('iDesc').value.trim();
+      const sev = document.getElementById('iSeverity').value; const rep = document.getElementById('iReporter').value || 'Anonymous';
+      if(!title) return alert('Title required');
+      const newId = 'INC-'+String(Math.floor(Math.random()*900+100));
+      incidents.unshift({id:newId, title:title+' — '+desc.slice(0,80), severity:sev, assigned:'Unassigned', status:'open', reported: (new Date()).toISOString().slice(0,10)});
+      modal.style.display='none'; document.getElementById('iTitle').value=''; document.getElementById('iDesc').value=''; applyFilters();
+    });
+
+    // CSV Export
+    document.getElementById('exportBtn').addEventListener('click', ()=>{
+      const rows = ['ID,Title,Severity,Assigned,Status,Reported'];
+      incidents.forEach(i=> rows.push([i.id, '"'+i.title.replace(/"/g,'""')+'"', i.severity, i.assigned, i.status, i.reported].join(',')));
+      const blob = new Blob([rows.join('\n')], {type:'text/csv'});
+      const url = URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='incidents.csv'; a.click(); URL.revokeObjectURL(url);
+    });
+
+    // Chart
+    const ctx = document.getElementById('incChart').getContext('2d');
+    let incChart = new Chart(ctx, {
+      type:'doughnut',
+      data:{ labels:['Low','Medium','High'], datasets:[{data:[0,0,0], hoverOffset:4}] },
+      options:{ plugins:{ legend:{labels:{color:'#cbd5e1'}}} }
+    });
+    function updateChart(list){
+      const low = list.filter(i=>i.severity==='low').length;
+      const med = list.filter(i=>i.severity==='medium').length;
+      const high = list.filter(i=>i.severity==='high').length;
+      incChart.data.datasets[0].data = [low,med,high]; incChart.update();
+    }
+
+    // Utilities
+    function debounce(fn,ms){let t; return (...a)=>{clearTimeout(t); t=setTimeout(()=>fn(...a),ms)}}
+
+    // Init
+    renderTable(incidents);
+    updateChart(incidents);
+
+  </script></body>
+</html>
