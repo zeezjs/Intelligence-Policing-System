@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link active">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">User Management</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="page-header">
+                    <div class="page-title">System Settings</div>
+                    <div class="page-subtitle">Manage users and system configuration</div>
+                </div>
+
+                <div class="card">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div class="card-header" style="margin: 0;">User Accounts</div>
+                        <button class="btn btn-primary" onclick="showAddUserModal()">Add New User</button>
+                    </div>
+
+                    <div class="search-bar" style="margin-bottom: 20px;">
+                        <input type="text" class="form-control" placeholder="Search users by name, email, or role...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Badge Number</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Smith</td>
+                                    <td>j.smith@police.gov</td>
+                                    <td>Senior Analyst</td>
+                                    <td>#4501</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 25, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(1)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Martinez</td>
+                                    <td>m.martinez@police.gov</td>
+                                    <td>Field Officer</td>
+                                    <td>#4521</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 25, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(2)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>David Chen</td>
+                                    <td>d.chen@police.gov</td>
+                                    <td>Intelligence Officer</td>
+                                    <td>#4503</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 24, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(3)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Johnson</td>
+                                    <td>s.johnson@police.gov</td>
+                                    <td>Supervisor</td>
+                                    <td>#4488</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 24, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(4)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Brown</td>
+                                    <td>m.brown@police.gov</td>
+                                    <td>Field Officer</td>
+                                    <td>#4532</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 23, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(5)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Emily Davis</td>
+                                    <td>e.davis@police.gov</td>
+                                    <td>Analyst</td>
+                                    <td>#4510</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 23, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(6)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Robert Wilson</td>
+                                    <td>r.wilson@police.gov</td>
+                                    <td>Field Officer</td>
+                                    <td>#4545</td>
+                                    <td><span class="badge badge-warning">Inactive</span></td>
+                                    <td>Nov 15, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(7)">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Jennifer Garcia</td>
+                                    <td>j.garcia@police.gov</td>
+                                    <td>Intelligence Officer</td>
+                                    <td>#4508</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>Nov 22, 2024</td>
+                                    <td><button class="btn btn-primary btn-sm" onclick="editUser(8)">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">System Preferences</div>
+
+                        <div class="form-group">
+                            <label class="form-label">Default Report View</label>
+                            <select class="form-control">
+                                <option>All Reports</option>
+                                <option>My Reports Only</option>
+                                <option>Team Reports</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Notification Settings</label>
+                            <select class="form-control">
+                                <option>All Notifications</option>
+                                <option>High Priority Only</option>
+                                <option>None</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Time Zone</label>
+                            <select class="form-control">
+                                <option>Eastern Time (ET)</option>
+                                <option>Central Time (CT)</option>
+                                <option>Mountain Time (MT)</option>
+                                <option>Pacific Time (PT)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary">Save Preferences</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">Security Settings</div>
+
+                        <div class="form-group">
+                            <label class="form-label">Session Timeout</label>
+                            <select class="form-control">
+                                <option>15 minutes</option>
+                                <option>30 minutes</option>
+                                <option selected>1 hour</option>
+                                <option>2 hours</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Two-Factor Authentication</label>
+                            <select class="form-control">
+                                <option>Enabled</option>
+                                <option>Disabled</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Password Expiration</label>
+                            <select class="form-control">
+                                <option>30 days</option>
+                                <option selected>60 days</option>
+                                <option>90 days</option>
+                                <option>Never</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-primary">Save Security Settings</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">System Information</div>
+
+                    <div class="info-row">
+                        <div class="info-label">System Version</div>
+                        <div class="info-value">IPS v2.4.1</div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Database Status</div>
+                        <div class="info-value"><span class="badge badge-success">Online</span></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Last Backup</div>
+                        <div class="info-value">November 25, 2024 at 02:00</div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Total Storage Used</div>
+                        <div class="info-value">234 GB / 1 TB (23.4%)</div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Active Users</div>
+                        <div class="info-value">7 of 8</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/settings.js"></script>
+</body>
+
+</html>

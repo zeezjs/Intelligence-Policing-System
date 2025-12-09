@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspect Profile - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link active">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">Suspect Profile</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <div>
+                        <div class="page-title">Suspect #342</div>
+                        <div class="page-subtitle">Last updated: November 25, 2024</div>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="window.location.href='suspects.html'">
+                            Back to Suspects
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <div class="card">
+                            <div class="profile-photo">No Photo Available</div>
+
+                            <div class="info-row">
+                                <div class="info-label">Suspect ID</div>
+                                <div class="info-value">#342</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Status</div>
+                                <div class="info-value"><span class="badge badge-warning">Under Investigation</span>
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Risk Level</div>
+                                <div class="info-value"><span class="badge badge-danger">High</span></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">First Recorded</div>
+                                <div class="info-value">October 12, 2024</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Last Activity</div>
+                                <div class="info-value">November 25, 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card">
+                            <div class="card-header">Physical Description</div>
+
+                            <div class="info-row">
+                                <div class="info-label">Gender</div>
+                                <div class="info-value">Male</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Age Range</div>
+                                <div class="info-value">30-35 years</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Height</div>
+                                <div class="info-value">6'0" (183 cm)</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Build</div>
+                                <div class="info-value">Medium</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Hair</div>
+                                <div class="info-value">Dark Brown, Short</div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Distinguishing Marks</div>
+                                <div class="info-value">Tattoo on left forearm, visible scar on right cheek</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Detailed Description</div>
+                    <p style="line-height: 1.8; color: var(--text-medium);">
+                        Subject is a male in his early to mid-30s, approximately 6 feet tall with a medium build. Dark
+                        brown hair, typically worn short. Notable features include a visible tattoo on the left forearm
+                        depicting geometric patterns and a scar on the right cheek. Usually observed wearing casual
+                        clothing including dark jackets and jeans.
+                        <br><br>
+                        Subject has been observed in multiple locations throughout the downtown and industrial
+                        districts. Known to frequent commercial areas and appears to be conducting surveillance
+                        activities. Approach with caution.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Known Associates</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Suspect ID</th>
+                                    <th>Name/Alias</th>
+                                    <th>Relationship</th>
+                                    <th>Last Contact</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#289</td>
+                                    <td>Unknown Male</td>
+                                    <td>Frequent Contact</td>
+                                    <td>Nov 20, 2024</td>
+                                    <td><a href="suspect-profile.html?id=289" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#315</td>
+                                    <td>Unknown Female</td>
+                                    <td>Occasional Contact</td>
+                                    <td>Nov 15, 2024</td>
+                                    <td><a href="suspect-profile.html?id=315" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Related Reports</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RPT-2024-1247</td>
+                                    <td>Suspicious Activity</td>
+                                    <td>Downtown District</td>
+                                    <td>Nov 25, 2024</td>
+                                    <td><span class="badge badge-warning">Under Review</span></td>
+                                    <td><a href="report-details.html?id=1247" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>RPT-2024-1198</td>
+                                    <td>Surveillance</td>
+                                    <td>Industrial Zone</td>
+                                    <td>Nov 18, 2024</td>
+                                    <td><span class="badge badge-info">In Progress</span></td>
+                                    <td><a href="report-details.html?id=1198" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>RPT-2024-1142</td>
+                                    <td>Intelligence Tip</td>
+                                    <td>Port Area</td>
+                                    <td>Nov 10, 2024</td>
+                                    <td><span class="badge badge-success">Verified</span></td>
+                                    <td><a href="report-details.html?id=1142" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>RPT-2024-1089</td>
+                                    <td>Suspicious Activity</td>
+                                    <td>Downtown District</td>
+                                    <td>Oct 28, 2024</td>
+                                    <td><span class="badge badge-success">Closed</span></td>
+                                    <td><a href="report-details.html?id=1089" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Investigation Notes</div>
+
+                    <div
+                        style="padding: 16px; background-color: var(--light-blue); border-radius: 4px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <strong>Officer Chen</strong>
+                            <span style="font-size: 13px; color: var(--text-medium);">Nov 25, 2024 - 17:00</span>
+                        </div>
+                        <p style="margin: 0; color: var(--text-medium);">
+                            Facial recognition match from multiple camera angles. Forwarding profile to investigative
+                            unit for identification.
+                        </p>
+                    </div>
+
+                    <div
+                        style="padding: 16px; background-color: var(--light-blue); border-radius: 4px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <strong>Officer Martinez</strong>
+                            <span style="font-size: 13px; color: var(--text-medium);">Nov 18, 2024 - 15:30</span>
+                        </div>
+                        <p style="margin: 0; color: var(--text-medium);">
+                            Subject observed meeting with known associate #289 in industrial district. Surveillance
+                            continuing.
+                        </p>
+                    </div>
+
+                    <div style="padding: 16px; background-color: var(--light-blue); border-radius: 4px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <strong>Officer Johnson</strong>
+                            <span style="font-size: 13px; color: var(--text-medium);">Oct 12, 2024 - 10:15</span>
+                        </div>
+                        <p style="margin: 0; color: var(--text-medium);">
+                            Initial profile created based on multiple sightings in downtown commercial areas. Subject
+                            appears to be conducting reconnaissance.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-primary">Update Profile</button>
+                    <button class="btn btn-secondary">Add Note</button>
+                    <button class="btn btn-secondary">Export Profile</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/suspect-profile.js"></script>
+</body>
+
+</html>

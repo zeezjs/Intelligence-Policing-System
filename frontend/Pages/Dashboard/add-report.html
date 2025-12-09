@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Report - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link active">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">Add Intelligence Report</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="page-header">
+                    <div class="page-title">New Intelligence Report</div>
+                    <div class="page-subtitle">Complete all fields to submit a new intelligence report</div>
+                </div>
+
+                <div class="card">
+                    <form id="reportForm">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label" for="incidentType">Incident Type</label>
+                                <select id="incidentType" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="suspicious-activity">Suspicious Activity</option>
+                                    <option value="intelligence-tip">Intelligence Tip</option>
+                                    <option value="surveillance">Surveillance Report</option>
+                                    <option value="crime-pattern">Crime Pattern</option>
+                                    <option value="public-tip">Public Tip</option>
+                                    <option value="informant">Informant Information</option>
+                                    <option value="threat">Threat Assessment</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="priority">Priority Level</label>
+                                <select id="priority" class="form-control" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="location">Location</label>
+                                <input type="text" id="location" class="form-control"
+                                    placeholder="Enter location details" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="datetime">Date & Time</label>
+                                <input type="datetime-local" id="datetime" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="suspectName">Suspect Name</label>
+                                <input type="text" id="suspectName" class="form-control" placeholder="If known">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="suspectDescription">Suspect Description</label>
+                                <input type="text" id="suspectDescription" class="form-control"
+                                    placeholder="Physical description, clothing, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reportDetails">Detailed Report</label>
+                            <textarea id="reportDetails" class="form-control"
+                                placeholder="Provide comprehensive details about the incident..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="associatedCases">Associated Cases</label>
+                            <input type="text" id="associatedCases" class="form-control"
+                                placeholder="Case IDs (comma-separated)">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">File Attachments</label>
+                            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                                <input type="file" id="fileInput" multiple accept="image/*,.pdf,.doc,.docx">
+                                <p>Click to upload files (Photos, Documents, Videos)</p>
+                                <p style="font-size: 12px; color: var(--text-light); margin-top: 8px;">
+                                    Supported: JPG, PNG, PDF, DOC, DOCX
+                                </p>
+                            </div>
+                            <div id="fileList" style="margin-top: 12px; font-size: 13px; color: var(--text-medium);">
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary">Submit Report</button>
+                            <button type="button" class="btn btn-secondary"
+                                onclick="window.location.href='reports.html'">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/add-report.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspects - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link active">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">Suspects Database</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="page-header">
+                    <div class="page-title">All Suspects</div>
+                    <div class="page-subtitle">Search and manage suspect profiles</div>
+                </div>
+
+                <div class="card">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="form-control"
+                            placeholder="Search by ID, description, or location...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+
+                    <div class="filter-group">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="">All Risk Levels</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+
+                        <select class="form-control" style="width: 200px;">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="investigation">Under Investigation</option>
+                            <option value="monitoring">Monitoring</option>
+                            <option value="closed">Closed</option>
+                        </select>
+
+                        <button class="btn btn-secondary btn-sm">Clear Filters</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Suspect ID</th>
+                                    <th>Description</th>
+                                    <th>Risk Level</th>
+                                    <th>Status</th>
+                                    <th>Related Reports</th>
+                                    <th>Last Activity</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#342</td>
+                                    <td>Male, 30-35, Dark jacket</td>
+                                    <td><span class="badge badge-danger">High</span></td>
+                                    <td><span class="badge badge-warning">Investigation</span></td>
+                                    <td>4</td>
+                                    <td>Nov 25, 2024</td>
+                                    <td><a href="suspect-profile.html?id=342" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#315</td>
+                                    <td>Female, 25-30, Red vehicle</td>
+                                    <td><span class="badge badge-warning">Medium</span></td>
+                                    <td><span class="badge badge-info">Monitoring</span></td>
+                                    <td>2</td>
+                                    <td>Nov 23, 2024</td>
+                                    <td><a href="suspect-profile.html?id=315" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#289</td>
+                                    <td>Male, 35-40, Known associate</td>
+                                    <td><span class="badge badge-danger">High</span></td>
+                                    <td><span class="badge badge-warning">Investigation</span></td>
+                                    <td>6</td>
+                                    <td>Nov 20, 2024</td>
+                                    <td><a href="suspect-profile.html?id=289" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#267</td>
+                                    <td>Male, 28-32, Tattoos on arms</td>
+                                    <td><span class="badge badge-warning">Medium</span></td>
+                                    <td><span class="badge badge-info">Monitoring</span></td>
+                                    <td>3</td>
+                                    <td>Nov 18, 2024</td>
+                                    <td><a href="suspect-profile.html?id=267" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#241</td>
+                                    <td>Male, 40-45, Black sedan</td>
+                                    <td><span class="badge badge-success">Low</span></td>
+                                    <td><span class="badge badge-success">Closed</span></td>
+                                    <td>1</td>
+                                    <td>Nov 10, 2024</td>
+                                    <td><a href="suspect-profile.html?id=241" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#228</td>
+                                    <td>Female, 30-35, Frequent downtown</td>
+                                    <td><span class="badge badge-warning">Medium</span></td>
+                                    <td><span class="badge badge-info">Monitoring</span></td>
+                                    <td>5</td>
+                                    <td>Nov 8, 2024</td>
+                                    <td><a href="suspect-profile.html?id=228" class="btn btn-primary btn-sm">View</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/suspects.js"></script>
+</body>
+
+</html>
