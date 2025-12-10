@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../Assets/CSS/styles.css">
     <link rel="stylesheet" href="../../Assets/CSS/login.css">
     <link rel="stylesheet" href="../../Assets/CSS/layout.css">
-    <link rel="stylesheet" href="../../Assets/CSS/register.css">
 </head>
 
 <body>
@@ -20,20 +19,22 @@
                 <div class="login-subtitle">Intelligence Policing System</div>
             </div>
 
-            <form class="login-form" id="loginForm">
+            <form class="login-form" id="registerForm">
                 <div class="form-group">
                     <label class="form-label" for="full-name">Fullname</label>
-                    <input type="text" id="full-name" class="form-control" placeholder="Enter ypur fullname" required>
+                    <input type="text" id="full-name" class="form-control" placeholder="Enter your fullname" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="email">Email / Officer ID</label>
-                    <input type="text" id="email" class="form-control" placeholder="Enter your email or ID" required>
+                    <input type="text" id="email" class="form-control" placeholder="Enter your email or ID"
+                        pattern="[a-zA-Z]+\.[a-zA-Z]+@police\.gov" title="e.g., j.smith@police.gov" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label" for="password">Password</label>
                     <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                        pattern="(?=.*[A-Z])(?=.*[#!^()]).{8,}" title="At least 8 chars, 1 uppercase, 1 special char"
                         required>
                 </div>
 
@@ -44,6 +45,10 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Register</button>
+
+                <p class="account-form-text">Already have an account?
+                    <a href="login.html" class="account-form-link">Login</a>
+                </p>
             </form>
 
             <div class="login-footer">
@@ -53,6 +58,7 @@
     </div>
 
     <!-- <script src="js/login.js"></script> -->
+    <script src="../../Srcipts/auth.js"></script>
 </body>
 
 </html>
