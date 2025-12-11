@@ -43,9 +43,7 @@
 
 // checkAuth();
 
-// ============================
 // HANDLE FILE SELECTION (UI ONLY)
-// ============================
 document.getElementById('fileInput').addEventListener('change', function (e) {
     const fileList = document.getElementById('fileList');
     const files = e.target.files;
@@ -99,9 +97,7 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
 //     window.location.href = 'reports.html';
 // });
 
-// ============================
 // FILE INPUT DISPLAY
-// ============================
 document.getElementById('fileInput').addEventListener('change', function (e) {
     const fileList = document.getElementById('fileList');
     const files = e.target.files;
@@ -117,9 +113,7 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
     }
 });
 
-// ============================
 // SAVE REPORT TO LOCAL STORAGE
-// ============================
 document.getElementById('reportForm').addEventListener('submit', function (e) {
     e.preventDefault();
 

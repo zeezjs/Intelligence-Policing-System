@@ -1,6 +1,4 @@
-// -----------------------------
 // Save user to LocalStorage
-// -----------------------------
 function registerUser(fullname, email, password) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -14,9 +12,7 @@ function registerUser(fullname, email, password) {
     return true;
 }
 
-// -----------------------------
 // Login User
-// -----------------------------
 function loginUser(email, password) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -30,9 +26,7 @@ function loginUser(email, password) {
     return true;
 }
 
-// -----------------------------
 // EMAIL & PASSWORD VALIDATION
-// -----------------------------
 function validateEmail(email) {
     // Must be like j.smith@police.gov
     const regex = /^[a-zA-Z]+\.[a-zA-Z]+@police\.gov$/;
@@ -45,50 +39,19 @@ function validatePassword(password) {
     return regex.test(password);
 }
 
-// -----------------------------
 // Protect Pages
-// -----------------------------
 function checkAuth() {
     if (!localStorage.getItem("loggedInUser")) {
         window.location.href = "login.html";
     }
 }
 
-// -----------------------------
 // Logout
-// -----------------------------
-function logout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.href = "login.html";
-}
-
-// -----------------------------
-// Registration Form Handler
-// -----------------------------
-// document.getElementById("registerForm")?.addEventListener("submit", e => {
-//     e.preventDefault();
-
-//     const fullname = document.getElementById("full-name").value.trim();
-//     const email = document.getElementById("email").value.trim();
-//     const password = document.getElementById("password").value.trim();
-//     const confirmPassword = document.getElementById("confirm-password").value.trim();
-
-// Check password match
-//     if (password !== confirmPassword) {
-//         alert("Passwords do not match!");
-//         return;
-//     }
-
-//     const success = registerUser(fullname, email, password);
-
-//     if (!success) {
-//         alert("User with this email/ID already exists!");
-//         return;
-//     }
-
-//     alert("Registration successful!");
+// function logout() {
+//     localStorage.removeItem("loggedInUser");
 //     window.location.href = "login.html";
-// });
+// }
+
 
 document.getElementById("registerForm")?.addEventListener("submit", e => {
     e.preventDefault();
@@ -123,14 +86,12 @@ document.getElementById("registerForm")?.addEventListener("submit", e => {
         return;
     }
 
-    // 5️⃣ Registration successful → redirect to login
+    //  Registration successful → redirect to login
     alert("Registration successful!");
-    window.location.href = "login.html"; // adjust relative path if needed
+    window.location.href = "login.html"; 
 });
 
-// -----------------------------
 // Login Form Handler
-// -----------------------------
 document.getElementById("loginForm")?.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -145,5 +106,5 @@ document.getElementById("loginForm")?.addEventListener("submit", e => {
     }
 
     alert("Login successful!");
-    window.location.href = "../Dashboard/dashboard.html"; // redirect anywhere
+    window.location.href = "../Dashboard/dashboard.html"; 
 });

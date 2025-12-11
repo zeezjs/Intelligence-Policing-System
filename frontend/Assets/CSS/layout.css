@@ -120,6 +120,22 @@
     color: var(--text-medium);
 }
 
+.logout-btn {
+    margin-left: 15px;
+    padding: 6px 14px;
+    background: #d9534f;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease-in-out;
+}
+
+.logout-btn:hover {
+    background: #c9302c;
+}
+
 .content-area {
     padding: 32px;
 }

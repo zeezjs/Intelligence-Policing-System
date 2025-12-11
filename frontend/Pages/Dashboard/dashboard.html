@@ -65,13 +65,15 @@
 
         <main class="main-content">
             <div class="topbar">
-                <div class="topbar-title">Dashboard</div>
+                <div class="topbar-title">Analytics & Insights</div>
+            
                 <div class="topbar-user">
                     <div class="user-info">
-                        <div class="user-name">Officer John Smith</div>
-                        <div class="user-role">Senior Analyst</div>
+                        <div class="user-name" id="userName">Loading...</div>
+                        <div class="user-role" id="userRole">Senior Analyst</div>
                     </div>
-                    <div class="user-avatar">JS</div>
+                    <div class="user-avatar" id="userAvatar">--</div>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
                 </div>
             </div>
 
@@ -164,6 +166,7 @@
     </div>
 
     <script src="../../Srcipts/dashboard.js"></script>
+    <script src="../../Srcipts/auth-user.js"></script>
 </body>
 
 </html>

@@ -150,9 +150,7 @@ if (!report) {
     renderCaseNotes(report.caseNotes);
 }
 
-// ============================
 // CASE NOTES RENDER FUNCTION
-// ============================
 function renderCaseNotes(notes) {
     const notesContainer = document.getElementById('caseNotes');
     if (!notes || !notes.length) {
@@ -170,9 +168,7 @@ function renderCaseNotes(notes) {
     `).join('');
 }
 
-// ============================
 // UPDATE STATUS BUTTON
-// ============================
 document.querySelector('.btn-primary').addEventListener('click', function() {
     const newStatus = prompt('Enter new status (Under Review / Resolved / Pending):', report.status);
     if (!newStatus) return;
@@ -189,9 +185,7 @@ document.querySelector('.btn-primary').addEventListener('click', function() {
     document.getElementById('status').innerHTML = `<span class="badge ${getStatusClass(report.status)}">${report.status}</span>`;
 });
 
-// ============================
 // ADD NOTE BUTTON
-// ============================
 document.querySelector('.btn-secondary:nth-child(2)').addEventListener('click', function() {
     const noteText = prompt('Enter your note:');
     if (!noteText) return;
