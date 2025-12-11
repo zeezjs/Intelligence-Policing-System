@@ -8,6 +8,7 @@
     <!-- css -->
     <link rel="stylesheet" href="../../Assets/CSS/styles.css">
     <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+    <link rel="stylesheet" href="../../Assets/CSS/prediction.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 
@@ -146,6 +147,71 @@
                     <div class="card-header">Reports by Location</div>
                     <canvas id="locationChart"></canvas>
                 </div>
+<!-- 
+                <div class="card" id="predictionCard">
+                    <div class="card-header">Predicted Crime Incidents (Next Month)</div>
+                    <div class="prediction-body" style="padding: 24px;">
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 8px;">
+                            Based on recent activity trends and location frequency analysis
+                        </p>
+                
+                        <div id="predictionDisplay" 
+                            style="
+                                font-size: 48px; 
+                                font-weight: 700; 
+                                margin: 12px 0; 
+                                color: var(--primary);
+                            ">
+                            —
+                        </div>
+                
+                        <p id="predictionMessage" style="font-size: 14px; color: var(--text-medium); margin-top: 8px;">
+                            Prediction will update automatically when filters are applied.
+                        </p>
+                    </div>
+                </div> -->
+                
+                <section class="prediction-section">
+                    <h2>Crime Prediction Engine</h2>
+                    <p>Enter incident details to predict crime patterns & risk levels.</p>
+                
+                    <form id="predictionForm">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" placeholder="E.g. Surulere, Ikeja, Zaria">
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="time">Time of Day</label>
+                            <select id="time">
+                                <option value="">Select...</option>
+                                <option value="morning">Morning (6am - 12pm)</option>
+                                <option value="afternoon">Afternoon (12pm - 6pm)</option>
+                                <option value="evening">Evening (6pm - 12am)</option>
+                                <option value="night">Night (12am - 6am)</option>
+                            </select>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="crimeType">Crime Category</label>
+                            <select id="crimeType">
+                                <option value="">Select...</option>
+                                <option value="theft">Theft/Robbery</option>
+                                <option value="assault">Assault</option>
+                                <option value="fraud">Fraud</option>
+                                <option value="vandalism">Vandalism</option>
+                            </select>
+                        </div>
+                
+                        <button type="submit" class="btn-predict">Predict</button>
+                    </form>
+                
+                    <div id="predictionResult" class="prediction-result" style="display:none;">
+                        <h3>Prediction Result</h3>
+                        <p id="predictionOutput"></p>
+                    </div>
+                </section>
+                
 
                 <div class="card">
                     <div class="card-header">Activity Heat Map by Time of Day</div>
@@ -234,6 +300,7 @@
     </div>
 
     <script src="../../Srcipts/analytics.js"></script>
+    <script src="../../Srcipts/prediction.js"></script>
 </body>
 
 </html>

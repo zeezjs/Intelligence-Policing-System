@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -297,6 +297,228 @@
                     </div>
                 </div>
 
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-primary">Update Profile</button>
+                    <button class="btn btn-secondary">Add Note</button>
+                    <button class="btn btn-secondary">Export Profile</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/suspect-profile.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspect Profile - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link active">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">Suspect Profile</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <!-- Header -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <div>
+                        <div class="page-title" data-field="page-title">Suspect #ID</div>
+                        <div class="page-subtitle" data-field="page-subtitle">Last updated: DATE</div>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="window.location.href='suspects.html'">
+                            Back to Suspects
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Basic Info & Physical Description -->
+                <div class="grid-2">
+                    <div>
+                        <div class="card">
+                            <div class="profile-photo" data-field="photo">No Photo Available</div>
+
+                            <div class="info-row">
+                                <div class="info-label">Suspect ID</div>
+                                <div class="info-value" data-field="id"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Status</div>
+                                <div class="info-value" data-field="status"><span class="badge"></span></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Risk Level</div>
+                                <div class="info-value" data-field="riskLevel"><span class="badge"></span></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">First Recorded</div>
+                                <div class="info-value" data-field="firstRecorded"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Last Activity</div>
+                                <div class="info-value" data-field="lastActivity"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card">
+                            <div class="card-header">Physical Description</div>
+
+                            <div class="info-row">
+                                <div class="info-label">Gender</div>
+                                <div class="info-value" data-field="gender"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Age Range</div>
+                                <div class="info-value" data-field="ageRange"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Height</div>
+                                <div class="info-value" data-field="height"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Build</div>
+                                <div class="info-value" data-field="build"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Hair</div>
+                                <div class="info-value" data-field="hair"></div>
+                            </div>
+
+                            <div class="info-row">
+                                <div class="info-label">Distinguishing Marks</div>
+                                <div class="info-value" data-field="marks"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Description -->
+                <div class="card">
+                    <div class="card-header">Detailed Description</div>
+                    <p style="line-height: 1.8; color: var(--text-medium);" data-field="description"></p>
+                </div>
+
+                <!-- Known Associates -->
+                <div class="card">
+                    <div class="card-header">Known Associates</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Suspect ID</th>
+                                    <th>Name/Alias</th>
+                                    <th>Relationship</th>
+                                    <th>Last Contact</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody data-field="associates"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Related Reports -->
+                <div class="card">
+                    <div class="card-header">Related Reports</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody data-field="reports"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Investigation Notes -->
+                <div class="card">
+                    <div class="card-header">Investigation Notes</div>
+                    <div data-field="notes"></div>
+                </div>
+
+                <!-- Actions -->
                 <div style="display: flex; gap: 12px;">
                     <button class="btn btn-primary">Update Profile</button>
                     <button class="btn btn-secondary">Add Note</button>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -211,6 +211,199 @@
                     </div>
                 </div>
 
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-primary">Update Status</button>
+                    <button class="btn btn-secondary">Add Note</button>
+                    <button class="btn btn-secondary">Export Report</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../Srcipts/report-details.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Details - Intelligence Policing System</title>
+    <link rel="stylesheet" href="../../Assets/CSS/styles.css">
+    <link rel="stylesheet" href="../../Assets/CSS/layout.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>IPS</h2>
+                <p>Intelligence Policing System</p>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link active">
+                            <span class="nav-icon">📋</span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="add-report.html" class="nav-link">
+                            <span class="nav-icon">➕</span>
+                            Add Report
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="suspects.html" class="nav-link">
+                            <span class="nav-icon">👤</span>
+                            Suspects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <span class="nav-icon">📈</span>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <span class="nav-icon">⚙️</span>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="topbar">
+                <div class="topbar-title">Report Details</div>
+                <div class="topbar-user">
+                    <div class="user-info">
+                        <div class="user-name">Officer John Smith</div>
+                        <div class="user-role">Senior Analyst</div>
+                    </div>
+                    <div class="user-avatar">JS</div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <div>
+                        <div class="page-title" id="reportTitle"></div>
+                        <div class="page-subtitle" id="reportDate"></div>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="window.location.href='reports.html'">
+                            Back to Reports
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Incident Information -->
+                <div class="card">
+                    <div class="card-header">Incident Information</div>
+
+                    <div class="info-row">
+                        <div class="info-label">Report ID</div>
+                        <div class="info-value" id="reportID"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Incident Type</div>
+                        <div class="info-value" id="incidentType"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Priority Level</div>
+                        <div class="info-value" id="priority"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Status</div>
+                        <div class="info-value" id="status"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Date & Time</div>
+                        <div class="info-value" id="datetime"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Reporting Officer</div>
+                        <div class="info-value" id="reportingOfficer"></div>
+                    </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="card">
+                    <div class="card-header">Location Details</div>
+
+                    <div class="info-row">
+                        <div class="info-label">Location</div>
+                        <div class="info-value" id="location"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Coordinates</div>
+                        <div class="info-value" id="coordinates"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Area Type</div>
+                        <div class="info-value" id="areaType"></div>
+                    </div>
+                </div>
+
+                <!-- Suspect Information -->
+                <div class="card">
+                    <div class="card-header">Suspect Information</div>
+
+                    <div class="info-row">
+                        <div class="info-label">Suspect Name</div>
+                        <div class="info-value" id="suspectName"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Description</div>
+                        <div class="info-value" id="suspectDescription"></div>
+                    </div>
+
+                    <div class="info-row">
+                        <div class="info-label">Associated Suspects</div>
+                        <div class="info-value" id="associatedSuspects"></div>
+                    </div>
+                </div>
+
+                <!-- Detailed Report -->
+                <div class="card">
+                    <div class="card-header">Detailed Report</div>
+                    <p id="reportDetails" style="line-height: 1.8; color: var(--text-medium);"></p>
+                </div>
+
+                <!-- Evidence & Attachments -->
+                <div class="card">
+                    <div class="card-header">Evidence & Attachments</div>
+                    <div class="evidence-preview" id="evidenceAttachments"></div>
+                </div>
+
+                <!-- Case Notes & Updates -->
+                <div class="card">
+                    <div class="card-header">Case Notes & Updates</div>
+                    <div id="caseNotes"></div>
+                </div>
+
+                <!-- Action Buttons -->
                 <div style="display: flex; gap: 12px;">
                     <button class="btn btn-primary">Update Status</button>
                     <button class="btn btn-secondary">Add Note</button>
